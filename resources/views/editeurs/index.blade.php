@@ -62,7 +62,9 @@
 
 <div style="display: flex; align-items: center; justify-content: center;">
     <input type="text" id="search" placeholder="Rechercher un éditeur">
+    @if (session('user.role') == 'gestionnaire')
     <a id="add" href="{{ route('editeurs.create') }}"><img src="/img/add.png" alt="Créer un éditeur" width="40" height="40"></a>
+    @endif
 </div>
 <div style="display: flex; align-items: center; justify-content: center;">
     <table class="table table-striped table-bordered table-hover">
@@ -70,7 +72,9 @@
             <tr>
                 <th>ID</th>
                 <th>Libelle</th>
+                @if (session('user.role') == 'gestionnaire')
                 <th>Gérer</th>
+                @endif
             </tr>
         </thead>
         <tbody id="editeurs-table">
@@ -78,6 +82,7 @@
                 <tr>
                     <td>{{ $editeur->id_editeur }}</td>
                     <td>{{ $editeur->libelle }}</td>
+                    @if (session('user.role') == 'gestionnaire')
                     <td>
                         <a href="{{ route('editeurs.edit', $editeur->id_editeur) }}">
                             <img src="/img/edit.png" alt="Edit" width="40" height="40"></a>
@@ -89,6 +94,7 @@
                             </button>
                         </form>
                     </td>
+                    @endif
                 </tr>
             @endforeach
         </tbody>

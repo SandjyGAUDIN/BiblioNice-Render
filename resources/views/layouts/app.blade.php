@@ -16,7 +16,9 @@
                     <li><a href="{{ route('reservations.index') }}">Réservations</a></li>
                     <li><a href="{{ route('ouvrages') }}">Ouvrages</a></li>
                     <li><a href="{{ route('auteurs.index') }}">Auteurs</a></li>
+                    @if(session('user.role') == 'gestionnaire')
                     <li><a href="{{ route('users.list') }}">Utilisateurs</a></li>
+                    @endif
                     <li><a href="{{ route('editeurs.index') }}">Editeurs</a></li>
                     <div>
                     <li class="nav-item">
